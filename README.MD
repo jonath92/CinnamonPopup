@@ -23,24 +23,32 @@ const popupMenu = createPopupMenu({laucher: myApplet.actor})
 
 The so created popupMenu is just a `imports.gi.St.BoxLayout` with a css class which ensure the style. By executing the `createPopupMenu` function, the popupMenu is furthermore connected to the passed Applet Actor, which for example ensures that the popup Menu is always shown next to the applet.
 
-As the popupMenu is just a `imports.gi.St.BoxLayout` all methods and properties are very well documented: https://gjs-docs.gnome.org/st10~1.0_api/st.boxlayout. The only additional method added to the popupMenu is function `toggle` which should be used to open/close the popupMenu:
+As the popupMenu is just a `imports.gi.St.BoxLayout` all methods and properties are very well documented: https://gjs-docs.gnome.org/st10~1.0_api/st.boxlayout. The only additional method added to the popupMenu is the function `toggle` which should be used to open/close the popupMenu:
 
 ```
 myApplet.on_applet_clicked = () => popupMenu.toggle()
 ```
 
-Widgets can be added to the popupMenu by `add_child` however it will most likely look pretty ugly (or is even not visible) as no style is provided. Therefore it is recommended to create another `BoxLayout` for each Widget give it the style_class 'popup-menu-item`
+Widgets can be added to the popupMenu by `add_child` however it will most likely look pretty ugly (or is even not visible) as no style is provided. Therefore it is recommended to create another `BoxLayout` for each Widget and give it the style_class `popup-menu-item`
 
 ```ts
-const popupMenuItem = new BoxLayout({
-  style_class: 'popup-menu-item',
-})
 
-const label = new Label({
-  text: 'my Item',
-})
+function createSimpleItem(text: string){
+    const popupMenuItem = new BoxLayout({
+        style_class: 'popup-menu-item',
+    })
 
-popupMenuItem.add_child(label)
+    const label = new Label({
+        text
+    })
+
+    popupMenuItem.add_child(label)
+
+    return popupMenuItem
+}
+
+
+popupMenu.add_child(createSimpleItem('Simple Item'))
 ```
 
 # TODO
@@ -48,7 +56,3 @@ popupMenuItem.add_child(label)
 - There are no unit tests included
 - Include more functions to make the creation of popupMenuItems (such as Seperator Item) more easily (see the radioApplet for an example). Therefore the bundling of this library needs to be improved.
 - Allow usage of JavaScript?
-
-```
-
-```
