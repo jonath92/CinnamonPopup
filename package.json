@@ -1,0 +1,20 @@
+{
+  "name": "cinnamonpopup",
+  "version": "1.0.0",
+  "description": "An alternative way to create PopupMenus for Cinnamon Applets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonath92/CinnamonPopup.git"
+  },
+  "keywords": [],
+  "author": "Jonathan Heard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jonath92/CinnamonPopup/issues"
+  },
+  "homepage": "https://github.com/jonath92/CinnamonPopup#readme"
+}
