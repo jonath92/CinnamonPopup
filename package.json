@@ -1,6 +1,6 @@
 {
   "name": "cinnamonpopup",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An alternative way to create PopupMenus for Cinnamon Applets",
   "main": "index.js",
   "scripts": {
@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/jonath92/CinnamonPopup#readme",
   "devDependencies": {
-    "@ci-types/cjs": "^1.0.2"
+    "@ci-types/cjs": "^1.0.3"
   }
 }

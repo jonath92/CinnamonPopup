@@ -52,7 +52,6 @@ export function createPopupMenu(args: Arguments) {
     launcher.connect('queue-relayout', () => {
         if (!box.visible) return
 
-
         setTimeout(() => {
             setLayout()
         }, 0);
@@ -60,7 +59,6 @@ export function createPopupMenu(args: Arguments) {
 
     bin.connect('queue-relayout', () => {
         if (!box.visible) return
-
 
         setTimeout(() => {
             setLayout()
@@ -108,15 +106,16 @@ export function createPopupMenu(args: Arguments) {
         const freeSpaceHeight = (freeSpace.bottom - freeSpace.top) / global.ui_scale
 
         const boxThemeNode = box.get_theme_node()
-
         const binThemeNode = bin.get_theme_node()
 
-        const paddingTop = boxThemeNode.get_padding(Side.TOP)
-        const paddingBottom = boxThemeNode.get_padding(Side.BOTTOM)
-        const borderWidthTop = binThemeNode.get_border_width(Side.TOP)
-        const borderWidthBottom = binThemeNode.get_border_width(Side.BOTTOM)
-
-        const maxHeight = freeSpaceHeight - paddingBottom - paddingTop - borderWidthTop - borderWidthBottom
+        const paddingTopBox = boxThemeNode.get_padding(Side.TOP)
+        const paddingBottomBox = boxThemeNode.get_padding(Side.BOTTOM)
+        const borderWidthTopBin = binThemeNode.get_border_width(Side.TOP)
+        const borderWidthBottomBIN = binThemeNode.get_border_width(Side.BOTTOM)
+        const paddingTopBin = binThemeNode.get_padding(Side.TOP)
+        const paddingBottomBin = binThemeNode.get_padding(Side.BOTTOM)
+        
+        const maxHeight = freeSpaceHeight - paddingBottomBox - paddingTopBox - borderWidthTopBin - borderWidthBottomBIN - paddingTopBin - paddingBottomBin
 
         return maxHeight
     }
