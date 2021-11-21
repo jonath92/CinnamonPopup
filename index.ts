@@ -47,6 +47,7 @@ export function createPopupMenu(args: Arguments) {
 
     box.connect('key-press-event', (actor, event) => {
         event.get_key_symbol() === KEY_Escape && close()
+        return true
     })
 
     launcher.connect('queue-relayout', () => {
@@ -157,8 +158,14 @@ export function createPopupMenu(args: Arguments) {
         pushModal(box)
 
         // For some reason, it is emmited the button-press event when clicking e.g on the desktop but the button-release-event when clicking on another applet
-        global.stage.connect('button-press-event', handleClick)
-        global.stage.connect('button-release-event', handleClick)
+        global.stage.connect('button-press-event', (actor, event) => {
+            handleClick(actor, event)
+            return true
+        })
+        global.stage.connect('button-release-event', (actor, event) => {
+            handleClick(actor, event)
+            return true
+        })
     }
 
     function close() {

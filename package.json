@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/jonath92/CinnamonPopup#readme",
   "devDependencies": {
-    "@ci-types/cjs": "^1.0.3"
+    "@ci-types/cjs": "^1.0.9"
   }
 }
