@@ -127,7 +127,7 @@ export function createPopupMenu(args: Arguments) {
 
         const [minWidth, minHeight, natWidth, natHeight] = box.get_preferred_size();
 
-        const margin = (natWidth - appletBox.get_width()) / 2
+        const margin = ((natWidth || 0) - appletBox.get_width()) / 2
 
         const xLeftNormal = Math.max(freeSpace.left, appletBox.x1 - margin);
         const xRightNormal = appletBox.x2 + margin
@@ -135,7 +135,7 @@ export function createPopupMenu(args: Arguments) {
         const xLeft = (xRightNormal < freeSpace.right) ? xLeftNormal : xLeftMax
 
         const yTopNormal = Math.max(appletBox.y1, freeSpace.top);
-        const yBottomNormal = yTopNormal + natHeight;
+        const yBottomNormal = yTopNormal + (natHeight || 0);
         const yTopMax = freeSpace.bottom - box.height;
         const yTop = (yBottomNormal < freeSpace.bottom) ? yTopNormal : yTopMax
 
